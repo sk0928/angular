@@ -1,12 +1,29 @@
-(function(){
-     /* module is the file for a particular application */
-    angular.module('app',[])
-    .run(GlobalModel).config(function(){
-        console.log("Config fn under app");
-    })
-    GlobalModel.$inject=['$rootScope'];
-    function GlobalModel($rootScope){
-        console.log("run fn under app");
-        $rootScope.companyName = "Sogeti Pvt. Ltd."
-    }
-})();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Capgemini || Employee</title>
+    <script src="Scripts/angular.js"></script>
+    <script src="App/capgemini.app.js"></script>
+    <script src="App/Controllers/capgemini.employees.controller.js"></script>
+    <script src="App/Controllers/capgemini.department.controller.js"></script>
+</head>
+<body ng-app="app"> <!-- ng-app is the starting or entering point . ng is the in-builf part of AJ. After browser find the 
+        ng-app. It loads HTML then. -->
+        <h1>{{companyName}}</h1>
+        <div ng-controller="EmployeeController as emp">
+            <h2>{{emp.pageTitle}}</h2> <!-- {{}} is the  exrpession in angular and browser and HTML doesn't read this' -->
+            <h3>{{emp.pageSubTitle}} : {{11*11*11*11}}</h4>
+            <h4>{{emp.city}}</h3>
+            <hr>
+             <div ng-controller="DepartmentController as dept">
+            <h3>{{dept.projectName}}</h3>
+            <h4>{{dept.location}}</h4>
+            <h4>{{dept.city}}</h4>
+            <hr>
+            <button ng-click="emp.changeCompanyName()">Change Company</button>
+           </div>
+        </div>
+       
+   </body>
+</html>
