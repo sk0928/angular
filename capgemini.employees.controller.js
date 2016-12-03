@@ -18,10 +18,15 @@
         //     capscp.city="London";
         // }
         .controller('EmployeeController',EmployeeController);
-            function EmployeeController(){
+            EmployeeController.$inject=['$rootScope'];
+            function EmployeeController($rootScope){
             var vm=this
-            vm.pageTitle = "Capgemini India Pvt. Ltd.";
+            vm.pageTitle = $rootScope.companyName;
             vm.pageSubTitle = "Employees Portal";
             vm.city="London";
+
+            vm.changeCompanyName=function(){
+                $rootScope.companyName = "HS Inc."
+            }
         }
 })();
